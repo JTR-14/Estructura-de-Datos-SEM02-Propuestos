@@ -20,13 +20,10 @@ public class VectoresReales {
         totalElementos = 0;
     }
 
-    public boolean agregar(double valor) {
+    public void agregar(double valor) {
         if (totalElementos < vector.length) {
             vector[totalElementos] = valor;
             totalElementos++;
-            return true;
-        } else {
-            return false;
         }
     }
 
