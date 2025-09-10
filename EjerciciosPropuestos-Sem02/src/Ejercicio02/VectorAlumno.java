@@ -31,5 +31,59 @@ public class VectorAlumno {
         }
         modelo.setDataVector(datos, titulos);
     }
+    private void quickSortAlfabetico(Alumno a[], int primero, int ultimo) {
+        int i, j, central;
+        Alumno pivote, temp;
+        central=(primero+ultimo)/2;
+        pivote=a[central];
+        i=primero;
+        j=ultimo;
+    do{
+        while(a[i].getNombre().compareToIgnoreCase(pivote.getNombre())<0) i++;
+        while(a[j].getNombre().compareToIgnoreCase(pivote.getNombre())>0) j--;
+        if(i<=j){
+            temp=a[i];
+            a[i]=a[j];
+            a[j]=temp;
+            i++;
+            j--;
+        }
+    }while(i<=j);
+    if(primero<j)
+        quickSortAlfabetico(a,primero,j);
+    if(i<ultimo)
+        quickSortAlfabetico(a,i,ultimo);
+    }
+
+    public void quickSortAlfabetico() {
+        quickSortAlfabetico(vector,0,totalElementos-1);
+    }
+
+    private void quickSortMerito(Alumno a[], int primero, int ultimo) {
+        int i, j, central;
+        Alumno pivote, temp;
+        central=(primero+ultimo)/2;
+        pivote=a[central];
+        i=primero;
+        j=ultimo;
+        do{
+            while(a[i].getNota()>pivote.getNota()) i++;
+            while(a[j].getNota()<pivote.getNota()) j--;
+            if(i<=j){
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+                i++;
+                j--;
+        }
+    }while(i<=j);
+    if(primero<j)
+        quickSortMerito(a,primero,j);
+    if(i<ultimo)
+        quickSortMerito(a,i,ultimo);
     
+    }
+    public void quickSortMerito(){
+        quickSortMerito(vector,0,totalElementos-1);
+    }
 }
